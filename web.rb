@@ -4,7 +4,15 @@ require 'uri'
 require 'rexml/document'
 
 #
+# Handle the root "/" url path
+#
+get '/' do
+	redirect to('/mlb/stats/game_scores'), 303
+end
+
+#
 # Handle the "/mlb/stats/game_scores" url
+#
 get '/mlb/stats/game_scores' do
 
 	# if a date was given in the query string parameters
@@ -39,16 +47,21 @@ get '/mlb/stats/game_scores' do
 	rss
 end
 
-# game info class
+#
+# Game info class
+#
 class Game
 	attr_accessor :id, :status, :start_time, :delay_reason, :teams
+	attr_accessor :inning_number, :inning_half
 	
 	def initialize
 		@teams = Array.new(2)
 	end
 end
 
-# team info class
+#
+#  Team info class
+#
 class Team
 	attr_accessor :name, :runs, :hits, :errors
 	
@@ -56,7 +69,9 @@ class Team
 	end
 end
 
-# mlb agent class
+#
+# MLB agent class
+#
 class MlbAgent
 	attr_accessor :url, :xml_data, :xml_doc, :games
 	
@@ -118,19 +133,71 @@ class MlbAgent
 			# create a new game object
 			game = Game.new
 			
-			# populate the game object
+			#
+			# Populate the game object
+			#
+			
+			# get the game attributes
 			game_attributes = game_element.elements['game'].attributes
+			
+			# set the game id
 			game.id = game_attributes['id']
+			
+			# set the game status
 			game.status = game_attributes['status']
+			
+			# set the game start time
 			game.start_time = game_attributes['start_time']
+			
+			# set the game delay reason (if given)
 			game.delay_reason = game_attributes['delay_reason']
+			
+			# spin through each team element
 			game_element.elements.each_with_index('team') do |team_element, index|
+				# only process two team elements
 				if (index < 2)
+					# create a new team object
 					team = game.teams[index] = Team.new
+					
+					# set the team name
 					team.name = team_element.attributes['name']
+					
+					# set the number of runs scored by the team
 					team.runs = team_element.elements['gameteam'].attributes['R']
+					
+					# set the number of hits made by the team
 					team.hits = team_element.elements['gameteam'].attributes['H']
+					
+					# set the number of errors made by the team
 					team.errors = team_element.elements['gameteam'].attributes['E']
+				end
+			end
+			
+			# get the inning element (only available when game is in-progress)
+			inning_element = game_element.elements['inningnum']
+			
+			# if the inning element is given
+			if inning_element
+				# get the inning number
+				inning_number = inning_element.attributes['inning']
+				
+				# get the inning number
+				if inning_element.attributes['half'] == 'B'
+					game.inning_half = 'Bottom'
+				else
+					game.inning_half = 'Top'
+				end
+				
+				# get the last number of the inning (as a character)
+				last_inning_number_char = inning_number.to_a[-1]
+				if (last_inning_number_char == "1")
+					game.inning_number = "#{inning_number}st"
+				elsif (last_inning_number_char == "2")
+					game.inning_number = "#{inning_number}nd"
+				elseif (last_inning_number_char == "3")
+					game.inning_number = "#{inning_number}rd"
+				else
+					game.inning_number = "#{inning_number}th"
 				end
 			end
 			
@@ -140,6 +207,9 @@ class MlbAgent
 	end
 end
 
+#
+# Game object array exporter class
+#
 class GameExporter
 	attr_accessor :rss_version, :rss_dtd
 	attr_accessor :title, :title_link, :title_description
@@ -184,22 +254,28 @@ class GameExporter
 			# create the rss title based on the game state
 			rss_title = ''
 			if ((status == "PRE_GAME") || (status == "IMMEDIATE_PREGAME"))
+				# build the rss title string
 				rss_title = game.teams[0].name + " vs " + game.teams[1].name +
 					"  (Starts " + game.start_time + ")";
 			elsif ((status == "FINAL") || (status == "GAME_OVER"))
+				# build the rss title string
 				rss_title = game.teams[0].name + " " + game.teams[0].runs +
 					game.teams[1].name + " " + game.teams[1].runs +
 					"  (FINAL)";
 			elsif ((status == "DELAYED") || (status == "OTHER"))
+				# build the rss title string
 				rss_title = game.teams[0].name + " vs " + game.teams[1].name +
                 "  (" + game.delay_reason + ")"
 			elsif (status == "IN_PROGRESS")
-        #
-        # NOTE: The inning information is *only* available
-        #       when the game's status is set to 'IN_PROGRESS'.
-        #
-				
+				# build the rss title string
+        rssTitle = game.teams[0].name + " " + game.teams[0].runs + "  " +
+                game.teams[1].name + " " + game.teams[1].runs +
+                "  (" + game.inning_half + " of the " +
+                game.inning_num + ")";
 			else
+				# build the rss title string
+				rss_title = game.teams[0].name + " vs " + game.teams[1].name +
+					"  (Starts " + game.start_time + ")";
 			end
 			
 			# add the rss game entry
