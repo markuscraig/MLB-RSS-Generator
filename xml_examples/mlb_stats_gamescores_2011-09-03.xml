@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE rss PUBLIC "-//Netscape Communications//DTD RSS 0.91//EN"
+ "http://my.netscape.com/publish/formats/rss-0.91.dtd">
+
+<rss version="0.91">
+
+<channel>
+<title>MLBAM Live Daily Scores</title>
+<link>http://pressbox.mlb.com</link>
+<description>MLBAM Live Daily Scores</description>
+<language>en-us</language>
+<image>
+ <title>MLB Live Scores</title>
+ <url>http://www.mpiii.com/scores/mlb.gif</url>
+ <link>http://www.mlb.com</link>
+</image>
+<webMaster>info@mlb.com</webMaster>
+<item><title>Chinese Taipei National Team vs MLB All-Stars  (Starts 9:00PM)</title></item>
+</channel></rss>
