@@ -4,13 +4,6 @@ require 'uri'
 require 'rexml/document'
 
 #
-# Handle the root "/" url path
-#
-get '/' do
-	redirect to('/mlb/stats/game_scores'), 303
-end
-
-#
 # Handle the "/mlb/stats/game_scores" url
 #
 get '/mlb/stats/game_scores' do
@@ -259,7 +252,7 @@ class GameExporter
 					"  (Starts " + game.start_time + ")";
 			elsif ((status == "FINAL") || (status == "GAME_OVER"))
 				# build the rss title string
-				rss_title = game.teams[0].name + " " + game.teams[0].runs +
+				rss_title = game.teams[0].name + " " + game.teams[0].runs + '  ' +
 					game.teams[1].name + " " + game.teams[1].runs +
 					"  (FINAL)";
 			elsif ((status == "DELAYED") || (status == "OTHER"))
