@@ -3,6 +3,42 @@ require 'net/http'
 require 'uri'
 require 'rexml/document'
 
+#
+# Handle the "/mlb/stats/game_scores" url
+get '/mlb/stats/game_scores' do
+
+	# if a date was given in the query string parameters
+	mlb_date = nil;
+	if (params[:year] && params[:month] && params[:day])
+		# use the custom date for fetching mlb data
+		mlb_date = Time.new(params[:year], params[:month], params[:day])
+	else
+		mlb_date = Time.now
+	end
+	
+	# create an mlb agent
+	mlb_agent = MlbAgent.new(mlb_date)
+	
+	# get the array of games
+	games = mlb_agent.games
+	
+	# create the game exporter
+	exporter = GameExporter.new()
+	exporter.title = 'MLBAM Live Daily Scores'
+	exporter.title_link = 'http://pressbox.mlb.com'
+	exporter.title_description = 'MLBAM Live Daily Scores'
+	exporter.image_title = 'MLB Live Scores'
+	exporter.image_url = 'http://www.mpiii.com/scores/mlb.gif'
+	exporter.image_link = 'http://www.mlb.com'
+	exporter.web_master = 'info@mlb.com'
+	
+	# export the games as rss
+	rss = exporter.rss(games)
+	
+	# render the game rss in the response
+	rss
+end
+
 # game info class
 class Game
 	attr_accessor :id, :status, :start_time, :delay_reason, :teams
@@ -24,9 +60,9 @@ end
 class MlbAgent
 	attr_accessor :url, :xml_data, :xml_doc, :games
 	
-	def initialize
+	def initialize(date=Time.now)
 		# build the mlb stats url for today
-		build_url()
+		build_url(date)
 		
 		# fetch the mlb xml data
 		@xml_data = fetch_xml_data()
@@ -35,12 +71,20 @@ class MlbAgent
 		@xml_doc = parse_xml(@xml_data)
 	end
 	
-	def build_url
-		url_year = 'year_2011'
-		url_month = 'month_09'
-		url_day = 'day_03'
+	def build_url(date)
+		# create the url components
+		#url_year = 'year_2011'
+		#url_month = 'month_09'
+		#url_day = 'day_03'
+		url_year = "year_%04d" % date.year
+		url_month = "month_%02d" % date.month
+		url_day = "day_%02d" % date.day
+		
+		# build the url
 		@url = "http://gd2.mlb.com/components/game/mlb/#{url_year}/#{url_month}/#{url_day}/scoreboard.xml"
-		puts "MLB URL = #{@url}"
+		
+		# write the url to the console
+		puts "MLB url used = #{@url}"
 	end
 	
 	def fetch_xml_data
@@ -165,43 +209,4 @@ class GameExporter
 		# add the rss footer
 		rss = rss + "</channel></rss>"
 	end
-end
-
-get '/mlb/stats/game_scores' do
-	# create an mlb agent
-	mlb_agent = MlbAgent.new
-	
-	# get the array of games
-	games = mlb_agent.games
-	
-	puts "Number of games = #{games.length}"
-	games.each do |game|
-		puts "Game ID = #{game.id}"
-		puts "Game status = #{game.status}"
-		puts "Game start time = #{game.start_time}"
-		puts "Team 1 = #{game.teams[0].name}"
-		puts "Team 1 = #{game.teams[0].runs}"
-		puts "Team 1 = #{game.teams[0].hits}"
-		puts "Team 1 = #{game.teams[0].errors}"
-		puts "Team 2 = #{game.teams[1].name}"
-		puts "Team 2 = #{game.teams[1].runs}"
-		puts "Team 2 = #{game.teams[1].hits}"
-		puts "Team 2 = #{game.teams[1].errors}"
-	end
-	
-	# create the game exporter
-	exporter = GameExporter.new()
-	exporter.title = 'MLBAM Live Daily Scores'
-	exporter.title_link = 'http://pressbox.mlb.com'
-	exporter.title_description = 'MLBAM Live Daily Scores'
-	exporter.image_title = 'MLB Live Scores'
-	exporter.image_url = 'http://www.mpiii.com/scores/mlb.gif'
-	exporter.image_link = 'http://www.mlb.com'
-	exporter.web_master = 'info@mlb.com'
-	
-	# export the games as rss
-	rss = exporter.rss(games)
-	
-	# render the game rss in the response
-	rss
 end
