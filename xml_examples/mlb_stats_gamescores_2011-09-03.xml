@@ -1,20 +1,288 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<!DOCTYPE rss PUBLIC "-//Netscape Communications//DTD RSS 0.91//EN"
- "http://my.netscape.com/publish/formats/rss-0.91.dtd">
-
-<rss version="0.91">
-
-<channel>
-<title>MLBAM Live Daily Scores</title>
-<link>http://pressbox.mlb.com</link>
-<description>MLBAM Live Daily Scores</description>
-<language>en-us</language>
-<image>
- <title>MLB Live Scores</title>
- <url>http://www.mpiii.com/scores/mlb.gif</url>
- <link>http://www.mlb.com</link>
-</image>
-<webMaster>info@mlb.com</webMaster>
-<item><title>Chinese Taipei National Team vs MLB All-Stars  (Starts 9:00PM)</title></item>
-</channel></rss>
+<?xml version="1.0" encoding="UTF-8"?><!--Copyright 2011 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms posted here http://gdx.mlb.com/components/copyright.txt-->
+<scoreboard date="20110903" last_modified="">
+   <go_game>
+      <game id="2011_09_03_pitmlb_chnmlb_1" league="NN" status="FINAL" start_time="1:05PM"
+            home_code=""/>
+      <team name="Cubs" code="">
+         <gameteam R="5" H="10" E="0"/>
+      </team>
+      <team name="Pirates" code="">
+         <gameteam R="7" H="11" E="0"/>
+      </team>
+      <w_pitcher wins="5" losses="4">
+         <pitcher name="C. Resop"/>
+      </w_pitcher>
+      <l_pitcher wins="2" losses="5">
+         <pitcher name="C. Marmol"/>
+      </l_pitcher>
+      <sv_pitcher saves="34">
+         <pitcher name="J. Hanrahan"/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_tormlb_nyamlb_1" league="AA" status="FINAL" start_time="1:05PM"
+            home_code=""/>
+      <team name="Yankees" code="">
+         <gameteam R="6" H="10" E="0"/>
+      </team>
+      <team name="Blue Jays" code="">
+         <gameteam R="4" H="8" E="0"/>
+      </team>
+      <w_pitcher wins="5" losses="2">
+         <pitcher name="B. Logan"/>
+      </w_pitcher>
+      <l_pitcher wins="13" losses="10">
+         <pitcher name="R. Romero"/>
+      </l_pitcher>
+      <sv_pitcher saves="1">
+         <pitcher name="D. Robertson"/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_seamlb_oakmlb_1" league="AA" status="FINAL" start_time="4:05PM"
+            home_code=""/>
+      <team name="Athletics" code="">
+         <gameteam R="3" H="6" E="1"/>
+      </team>
+      <team name="Mariners" code="">
+         <gameteam R="0" H="3" E="0"/>
+      </team>
+      <w_pitcher wins="8" losses="7">
+         <pitcher name="B. McCarthy"/>
+      </w_pitcher>
+      <l_pitcher wins="9" losses="9">
+         <pitcher name="M. Pineda"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_chamlb_detmlb_1" league="AA" status="FINAL" start_time="4:10PM"
+            home_code=""/>
+      <team name="Tigers" code="">
+         <gameteam R="9" H="15" E="2"/>
+      </team>
+      <team name="White Sox" code="">
+         <gameteam R="8" H="11" E="0"/>
+      </team>
+      <w_pitcher wins="1" losses="0">
+         <pitcher name="L. Marte"/>
+      </w_pitcher>
+      <l_pitcher wins="3" losses="4">
+         <pitcher name="S. Santos"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_cinmlb_slnmlb_1" league="NN" status="FINAL" start_time="4:10PM"
+            home_code=""/>
+      <team name="Cardinals" code="">
+         <gameteam R="6" H="10" E="1"/>
+      </team>
+      <team name="Reds" code="">
+         <gameteam R="4" H="10" E="1"/>
+      </team>
+      <w_pitcher wins="11" losses="7">
+         <pitcher name="J. Garcia"/>
+      </w_pitcher>
+      <l_pitcher wins="7" losses="7">
+         <pitcher name="H. Bailey"/>
+      </l_pitcher>
+      <sv_pitcher saves="2">
+         <pitcher name="J. Motte"/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_texmlb_bosmlb_1" league="AA" status="FINAL" start_time="4:10PM"
+            home_code=""/>
+      <team name="Red Sox" code="">
+         <gameteam R="12" H="16" E="1"/>
+      </team>
+      <team name="Rangers" code="">
+         <gameteam R="7" H="11" E="0"/>
+      </team>
+      <w_pitcher wins="5" losses="9">
+         <pitcher name="E. Bedard"/>
+      </w_pitcher>
+      <l_pitcher wins="11" losses="10">
+         <pitcher name="C. Lewis"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_balmlb_tbamlb_1" league="AA" status="FINAL" start_time="6:10PM"
+            home_code=""/>
+      <team name="Rays" code="">
+         <gameteam R="6" H="7" E="3"/>
+      </team>
+      <team name="Orioles" code="">
+         <gameteam R="3" H="5" E="0"/>
+      </team>
+      <w_pitcher wins="9" losses="8">
+         <pitcher name="W. Davis"/>
+      </w_pitcher>
+      <l_pitcher wins="4" losses="8">
+         <pitcher name="A. Simon"/>
+      </l_pitcher>
+      <sv_pitcher saves="23">
+         <pitcher name="K. Farnsworth"/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_milmlb_houmlb_1" league="NN" status="FINAL" start_time="7:05PM"
+            home_code=""/>
+      <team name="Astros" code="">
+         <gameteam R="2" H="5" E="1"/>
+      </team>
+      <team name="Brewers" code="">
+         <gameteam R="8" H="13" E="1"/>
+      </team>
+      <w_pitcher wins="10" losses="6">
+         <pitcher name="C. Narveson"/>
+      </w_pitcher>
+      <l_pitcher wins="6" losses="9">
+         <pitcher name="B. Norris"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_nynmlb_wasmlb_1" league="NN" status="FINAL" start_time="7:05PM"
+            home_code=""/>
+      <team name="Nationals" code="">
+         <gameteam R="8" H="12" E="0"/>
+      </team>
+      <team name="Mets" code="">
+         <gameteam R="7" H="9" E="1"/>
+      </team>
+      <w_pitcher wins="5" losses="5">
+         <pitcher name="S. Burnett"/>
+      </w_pitcher>
+      <l_pitcher wins="3" losses="5">
+         <pitcher name="B. Parnell"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_clemlb_kcamlb_1" league="AA" status="FINAL" start_time="7:10PM"
+            home_code=""/>
+      <team name="Royals" code="">
+         <gameteam R="5" H="8" E="3"/>
+      </team>
+      <team name="Indians" code="">
+         <gameteam R="1" H="3" E="1"/>
+      </team>
+      <w_pitcher wins="10" losses="10">
+         <pitcher name="L. Hochevar"/>
+      </w_pitcher>
+      <l_pitcher wins="2" losses="3">
+         <pitcher name="D. Huff"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_lanmlb_atlmlb_1" league="NN" status="FINAL" start_time="7:10PM"
+            home_code=""/>
+      <team name="Braves" code="">
+         <gameteam R="1" H="7" E="0"/>
+      </team>
+      <team name="Dodgers" code="">
+         <gameteam R="2" H="8" E="0"/>
+      </team>
+      <w_pitcher wins="2" losses="1">
+         <pitcher name="M. MacDougal"/>
+      </w_pitcher>
+      <l_pitcher wins="0" losses="1">
+         <pitcher name="A. Varvaro"/>
+      </l_pitcher>
+      <sv_pitcher saves="15">
+         <pitcher name="J. Guerra"/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_phimlb_flomlb_1" league="NN" status="FINAL" start_time="7:10PM"
+            home_code=""/>
+      <team name="Marlins" code="">
+         <gameteam R="8" H="7" E="0"/>
+      </team>
+      <team name="Phillies" code="">
+         <gameteam R="4" H="8" E="1"/>
+      </team>
+      <w_pitcher wins="9" losses="5">
+         <pitcher name="E. Mujica"/>
+      </w_pitcher>
+      <l_pitcher wins="6" losses="1">
+         <pitcher name="A. Bastardo"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_colmlb_sdnmlb_1" league="NN" status="FINAL" start_time="8:35PM"
+            home_code=""/>
+      <team name="Padres" code="">
+         <gameteam R="4" H="7" E="1"/>
+      </team>
+      <team name="Rockies" code="">
+         <gameteam R="5" H="11" E="0"/>
+      </team>
+      <w_pitcher wins="2" losses="1">
+         <pitcher name="A. White"/>
+      </w_pitcher>
+      <l_pitcher wins="5" losses="8">
+         <pitcher name="C. Luebke"/>
+      </l_pitcher>
+      <sv_pitcher saves="6">
+         <pitcher name="R. Betancourt"/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_arimlb_sfnmlb_1" league="NN" status="FINAL" start_time="9:05PM"
+            home_code=""/>
+      <team name="Giants" code="">
+         <gameteam R="2" H="9" E="0"/>
+      </team>
+      <team name="D-backs" code="">
+         <gameteam R="7" H="12" E="0"/>
+      </team>
+      <w_pitcher wins="18" losses="4">
+         <pitcher name="I. Kennedy"/>
+      </w_pitcher>
+      <l_pitcher wins="12" losses="12">
+         <pitcher name="T. Lincecum"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+   <go_game>
+      <game id="2011_09_03_minmlb_anamlb_1" league="AA" status="FINAL" start_time="9:05PM"
+            home_code=""/>
+      <team name="Angels" code="">
+         <gameteam R="10" H="14" E="0"/>
+      </team>
+      <team name="Twins" code="">
+         <gameteam R="6" H="9" E="1"/>
+      </team>
+      <w_pitcher wins="16" losses="7">
+         <pitcher name="J. Weaver"/>
+      </w_pitcher>
+      <l_pitcher wins="1" losses="3">
+         <pitcher name="P. Dumatrait"/>
+      </l_pitcher>
+      <sv_pitcher saves="0">
+         <pitcher name=". "/>
+      </sv_pitcher>
+   </go_game>
+</scoreboard>
